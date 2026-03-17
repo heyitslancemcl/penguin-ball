@@ -2,7 +2,8 @@
     "name": "PenguineBall.Tests.EditMode",
     "rootNamespace": "PenguineBall.Tests",
     "references": [
-        "PenguineBall.Core"
+        "PenguineBall.Core",
+        "PenguineBall.Input"
     ],
     "includePlatforms": [
         "Editor"
