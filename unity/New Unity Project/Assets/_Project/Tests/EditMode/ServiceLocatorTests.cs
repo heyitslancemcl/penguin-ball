@@ -2,12 +2,8 @@ using NUnit.Framework;
 using PenguineBall.Core;
 using System;
 
-namespace PenguineBall.Tests.Core
+namespace PenguineBall.Tests
 {
-    /// <summary>
-    /// Unity Test Runner (EditMode) tests for ServiceLocator.
-    /// Run via: Window → General → Test Runner → EditMode.
-    /// </summary>
     public class ServiceLocatorTests
     {
         [TearDown]
@@ -16,17 +12,12 @@ namespace PenguineBall.Tests.Core
             ServiceLocator.Clear();
         }
 
-        // ── Register / Get ────────────────────────────────────────────────────────
-
         [Test]
         public void Get_ReturnsRegisteredInstance()
         {
             var stub = new StubService();
             ServiceLocator.Register<IStubService>(stub);
-
-            var result = ServiceLocator.Get<IStubService>();
-
-            Assert.That(result, Is.SameAs(stub));
+            Assert.That(ServiceLocator.Get<IStubService>(), Is.SameAs(stub));
         }
 
         [Test]
@@ -36,10 +27,7 @@ namespace PenguineBall.Tests.Core
             var second = new StubService();
             ServiceLocator.Register<IStubService>(first);
             ServiceLocator.Register<IStubService>(second);
-
-            var result = ServiceLocator.Get<IStubService>();
-
-            Assert.That(result, Is.SameAs(second));
+            Assert.That(ServiceLocator.Get<IStubService>(), Is.SameAs(second));
         }
 
         [Test]
@@ -52,7 +40,6 @@ namespace PenguineBall.Tests.Core
         public void Get_ExceptionMessage_ContainsTypeName()
         {
             var ex = Assert.Throws<InvalidOperationException>(() => ServiceLocator.Get<IStubService>());
-
             Assert.That(ex.Message, Does.Contain(nameof(IStubService)));
         }
 
@@ -61,11 +48,8 @@ namespace PenguineBall.Tests.Core
         {
             ServiceLocator.Register<IStubService>(new StubService());
             ServiceLocator.Clear();
-
             Assert.Throws<InvalidOperationException>(() => ServiceLocator.Get<IStubService>());
         }
-
-        // ── Test doubles ──────────────────────────────────────────────────────────
 
         private interface IStubService { }
         private class StubService : IStubService { }

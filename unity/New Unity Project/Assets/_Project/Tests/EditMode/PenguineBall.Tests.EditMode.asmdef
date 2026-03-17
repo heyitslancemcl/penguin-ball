@@ -1,0 +1,20 @@
+{
+    "name": "PenguineBall.Tests.EditMode",
+    "rootNamespace": "PenguineBall.Tests",
+    "references": [
+        "PenguineBall.Core"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

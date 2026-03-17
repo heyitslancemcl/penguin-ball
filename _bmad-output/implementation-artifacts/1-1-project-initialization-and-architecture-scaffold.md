@@ -1,6 +1,6 @@
 # Story 1.1: Project Initialization & Architecture Scaffold
 
-Status: in-progress
+Status: review
 
 ## Story
 
@@ -19,19 +19,19 @@ so that all future stories have a consistent, well-organised foundation to build
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Create Unity project from template (AC: 1)
-  - [ ] Open Unity Hub → New Project → 3D Mobile (URP) template
-  - [ ] Select Unity 6 LTS (6000.x) as engine version
-  - [ ] Set project name to `PenguineBall`
-  - [ ] After creation: File → Build Settings → Switch Platform to iOS
-  - [ ] Player Settings → set portrait locked (disable all but Portrait)
-  - [ ] Verify URP asset is assigned in Graphics Settings
+- [x] Task 1: Create Unity project from template (AC: 1)
+  - [x] Open Unity Hub → New Project → 3D Mobile (URP) template
+  - [x] Select Unity 6 LTS (6000.x) as engine version
+  - [x] Set project name to `PenguineBall`
+  - [x] After creation: File → Build Profiles → Switch Platform to iOS
+  - [x] Player Settings → set portrait locked (disable all but Portrait)
+  - [x] Verify URP asset is assigned in Graphics Settings
 
-- [ ] Task 2: Install required packages via Package Manager (AC: 1)
-  - [ ] Verify Input System package is installed (required for gyroscope + joystick)
-  - [ ] Install DOTween: import from Asset Store or `Packages/manifest.json` (Demigiant)
-  - [ ] Note: GameAnalytics SDK installed in a later story (6.3) — do NOT install now
-  - [ ] Run DOTween Setup Utility (Tools → DOTween Utility Panel → Setup DOTween)
+- [x] Task 2: Install required packages via Package Manager (AC: 1)
+  - [x] Verify Input System package is installed (required for gyroscope + joystick)
+  - [x] Install DOTween: import from Asset Store or `Packages/manifest.json` (Demigiant)
+  - [x] Note: GameAnalytics SDK installed in a later story (6.3) — do NOT install now
+  - [x] Run DOTween Setup Utility (Tools → DOTween Utility Panel → Setup DOTween)
 
 - [x] Task 3: Create full folder structure (AC: 2)
   - [x] Create `Assets/_Project/Scripts/Core/`
@@ -58,14 +58,14 @@ so that all future stories have a consistent, well-organised foundation to build
   - [x] Create `Assets/_Project/Tests/Progression/`
   - [x] Add a `.gitkeep` to each empty folder so Git tracks them
 
-- [ ] Task 4: Create Bootstrap and GameScene scenes (AC: 3)
-  - [ ] Create `Assets/_Project/Scenes/Bootstrap.unity` — this is the persistent scene
-  - [ ] Create `Assets/_Project/Scenes/GameScene.unity` — loaded additively
-  - [ ] In Bootstrap scene: create an empty `Bootstrap` GameObject
-  - [ ] Add a `BootstrapManager` MonoBehaviour to Bootstrap GameObject
-  - [ ] Apply `[DefaultExecutionOrder(-100)]` attribute to `BootstrapManager` — ensures it runs before all other MonoBehaviours; Story 6.3 depends on this ordering for analytics service registration
-  - [ ] `BootstrapManager.Awake()`: call `DontDestroyOnLoad(gameObject)`
-  - [ ] Set Bootstrap as the startup scene in Build Settings
+- [x] Task 4: Create Bootstrap and GameScene scenes (AC: 3)
+  - [x] Create `Assets/_Project/Scenes/Bootstrap.unity` — this is the persistent scene
+  - [x] Create `Assets/_Project/Scenes/GameScene.unity` — loaded additively
+  - [x] In Bootstrap scene: create an empty `Bootstrap` GameObject
+  - [x] Add a `BootstrapManager` MonoBehaviour to Bootstrap GameObject
+  - [x] Apply `[DefaultExecutionOrder(-100)]` attribute to `BootstrapManager` — ensures it runs before all other MonoBehaviours; Story 6.3 depends on this ordering for analytics service registration
+  - [x] `BootstrapManager.Awake()`: call `DontDestroyOnLoad(gameObject)`
+  - [x] Set Bootstrap as the startup scene in Build Profiles (Bootstrap index 0, GameScene index 1)
 
 - [x] Task 5: Implement ServiceLocator (AC: 4)
   - [x] Create `Assets/_Project/Scripts/Core/ServiceLocator.cs`
