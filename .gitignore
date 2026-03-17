@@ -1,11 +1,13 @@
-# Unity generated folders
-[Ll]ibrary/
-[Tt]emp/
-[Ll]ogs/
-[Uu]ser[Ss]ettings/
-[Bb]uild/
-[Bb]uilds/
-[Oo]bj/
+# Unity generated folders (project lives under unity/)
+unity/*/[Ll]ibrary/
+unity/*/[Tt]emp/
+unity/*/[Ll]ogs/
+unity/*/[Uu]ser[Ss]ettings/
+unity/*/[Bb]uild/
+unity/*/[Bb]uilds/
+unity/*/[Oo]bj/
+# Claude Code session data
+.claude/
 
 # VS/Rider project files
 *.csproj
