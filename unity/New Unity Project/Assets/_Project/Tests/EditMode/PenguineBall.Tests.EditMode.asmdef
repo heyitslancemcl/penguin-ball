@@ -3,7 +3,8 @@
     "rootNamespace": "PenguineBall.Tests",
     "references": [
         "PenguineBall.Core",
-        "PenguineBall.Input"
+        "PenguineBall.Input",
+        "PenguineBall.Progression"
     ],
     "includePlatforms": [
         "Editor"

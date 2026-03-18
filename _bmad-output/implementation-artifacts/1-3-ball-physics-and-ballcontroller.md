@@ -1,6 +1,6 @@
 # Story 1.3: Ball Physics & BallController
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -254,6 +254,32 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+- Moved `IInputProvider.cs` from `Scripts/Input/` to `Scripts/Core/` to break the Core↔Input circular asmdef dependency. Namespace kept as `PenguineBall.Input` for semantic clarity. BallController resolves it within the same assembly.
+- Assembly graph: `Progression ← Core ← Input` (clean DAG, no cycles).
+- `KillPlane.ServiceLocator.Get<IBallStateManager>()` will throw until Story 1.4 registers the implementation — wrapped in null-conditional to be safe.
+
 ### Completion Notes List
 
+- ✅ Task 1: `BallState` enum (Rolling/Stunned/Recovery/Dead), `IBallStateManager` interface stub
+- ✅ Task 2: `LevelConfigSO` ScriptableObject with physics fields (maxVelocity, impulse, stuck threshold/window)
+- ✅ Task 3: MANUAL — `IceSurface.physicsMaterial` must be created in Unity Editor (0.02/0.02 friction, 0.1 bounciness, Minimum combine)
+- ✅ Task 4: MANUAL — Ball prefab Rigidbody settings to be confirmed in Inspector (Mass=1, Drag=0, AngularDrag=0.05, Interpolate, Continuous, freeze X/Z rotation); user confirms Player sphere already has Rigidbody + Collider
+- ✅ Task 5: `BallController.cs` — ServiceLocator.Get in Start(), FixedUpdate force + velocity cap, OnEnable/OnDisable event subscription, golden ball impulse, null-safe IBallStateManager guard
+- ✅ Task 6: Stuck detection in Update() — timer resets on movement, ShowStuckPrompt stub for Story 2.5
+- ✅ Task 7: `KillPlane.cs` — tag check, death arc wait coroutine, deferred BallState.Dead transition; MANUAL: KillPlane GameObject + BoxCollider trigger in GameScene; MANUAL: "Ball" tag on Player sphere
+- ✅ Task 8: `GameEventSO.cs` — reverse-iteration Raise() to handle listener removal during event; MANUAL: create `OnGoldenBallCollected.asset` in ScriptableObjects/Events/ via Unity Editor
+- ✅ Assembly definitions: `PenguineBall.Progression` (new), `PenguineBall.Core` updated to reference Progression
+
 ### File List
+
+unity/New Unity Project/Assets/_Project/Scripts/Core/BallState.cs
+unity/New Unity Project/Assets/_Project/Scripts/Core/IBallStateManager.cs
+unity/New Unity Project/Assets/_Project/Scripts/Core/BallController.cs
+unity/New Unity Project/Assets/_Project/Scripts/Core/KillPlane.cs
+unity/New Unity Project/Assets/_Project/Scripts/Core/GameEventSO.cs
+unity/New Unity Project/Assets/_Project/Scripts/Core/IInputProvider.cs (moved from Scripts/Input/)
+unity/New Unity Project/Assets/_Project/Scripts/Core/PenguineBall.Core.asmdef (updated)
+unity/New Unity Project/Assets/_Project/Scripts/Progression/LevelConfigSO.cs
+unity/New Unity Project/Assets/_Project/Scripts/Progression/PenguineBall.Progression.asmdef
+unity/New Unity Project/Assets/_Project/Tests/EditMode/BallControllerTests.cs
+unity/New Unity Project/Assets/_Project/Tests/EditMode/PenguineBall.Tests.EditMode.asmdef (updated)

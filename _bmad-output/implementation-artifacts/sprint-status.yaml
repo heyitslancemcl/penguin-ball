@@ -44,7 +44,7 @@ development_status:
   epic-1: in-progress
   1-1-project-initialization-and-architecture-scaffold: review
   1-2-input-abstraction-layer: review
-  1-3-ball-physics-and-ballcontroller: ready-for-dev
+  1-3-ball-physics-and-ballcontroller: review
   1-4-ball-state-machine: ready-for-dev
   epic-1-retrospective: optional
 

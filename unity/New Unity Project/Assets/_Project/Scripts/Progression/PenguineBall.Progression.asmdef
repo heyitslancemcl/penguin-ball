@@ -1,9 +1,7 @@
 {
-    "name": "PenguineBall.Core",
-    "rootNamespace": "PenguineBall.Core",
-    "references": [
-        "PenguineBall.Progression"
-    ],
+    "name": "PenguineBall.Progression",
+    "rootNamespace": "PenguineBall.Progression",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
